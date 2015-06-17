@@ -4,7 +4,8 @@ This is an example of a CEP (Creative Extension Platform) extension for Adobe Ph
 
 # Requirements
 
-You must have `npm` installed to download the dependencies.
+1. You must have `npm` installed to download the dependencies.
+2. You must have the AEM Assets Companion app installed.
 
 # Usage
 
