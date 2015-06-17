@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ExtensionManifest ExtensionBundleId="com.adobe.people.jedelson.searchaem" ExtensionBundleName="Search AEM" ExtensionBundleVersion="1.0" Version="4.0">
+    <ExtensionList>
+        <Extension Id="com.adobe.people.jedelson.searchaem.extension" Version="1.0"/>
+    </ExtensionList>
+    <ExecutionEnvironment>
+        <HostList>
+            <Host Name="PHXS" Version="[15.0,16.9]"/>
+        </HostList>
+        <LocaleList>
+            <Locale Code="All"/>
+        </LocaleList>
+        <RequiredRuntimeList>
+            <RequiredRuntime Name="CSXS" Version="5.0"/>
+        </RequiredRuntimeList>
+    </ExecutionEnvironment>
+    <DispatchInfoList>
+        <Extension Id="com.adobe.people.jedelson.searchaem.extension">
+            <DispatchInfo>
+                <Resources>
+                    <MainPath>./index.html</MainPath>
+                </Resources>
+                <UI>
+                    <Type>Panel</Type>
+                    <Menu>Search AEM</Menu>
+                    <Geometry>
+                        <Size>
+                            <Height>400</Height>
+                            <Width>400</Width>
+                        </Size>
+                    </Geometry>
+                    <Icons>
+                        <Icon Type="Normal">./icons/icon_normal.png</Icon>
+                        <Icon Type="RollOver">./icons/icon_normal_over.png</Icon>
+                        <Icon Type="DarkNormal">./icons/icon_normal.png</Icon>
+                        <Icon Type="DarkRollOver">./icons/icon_normal_over.png</Icon>
+                    </Icons>
+                </UI>
+            </DispatchInfo>
+        </Extension>
+    </DispatchInfoList>
+</ExtensionManifest>
