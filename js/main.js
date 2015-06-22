@@ -62,6 +62,18 @@
                             'fulltext' : term
                         }, SEARCH_DEFAULTS);
 
+                switch(cs.getApplicationID()) {
+                    case 'IDSN':
+                        searchParams['property'] = 'jcr:content/metadata/dc:format';
+                        searchParams['property.value'] = 'application/x-indesign';
+                        break;
+                    case 'PHSP':
+                    case 'PHXS':
+                        searchParams['property'] = 'jcr:content/metadata/dc:format';
+                        searchParams['property.value'] = 'image/%';
+                        searchParams['property.operation'] = 'like';
+                        break;
+                }
 
                 request.post({
                     url : $localStorage.baseUrl + "/bin/querybuilder.json",
