@@ -35,8 +35,8 @@
         'p.offset': 0
     });
 
-    app.factory('aem', ['request', '_', '$localStorage', 'SEARCH_DEFAULTS',
-        function(request, _, $localStorage, SEARCH_DEFAULTS) {
+    app.factory('aem', ['request', '_', 'cs', '$localStorage', 'SEARCH_DEFAULTS',
+        function(request, _, cs, $localStorage, SEARCH_DEFAULTS) {
         
         return {
             login: function(username, password, url, success, error) {
@@ -58,11 +58,14 @@
                 });
             },
             search: function(term, callback) {
+                var searchParams = _.extend({
+                            'fulltext' : term
+                        }, SEARCH_DEFAULTS);
+
+
                 request.post({
                     url : $localStorage.baseUrl + "/bin/querybuilder.json",
-                    form : _.extend({
-                            'fulltext' : term
-                        }, SEARCH_DEFAULTS),
+                    form : searchParams,
                     headers : {
                         'Cookie' : $localStorage.tokenCookie
                     }
@@ -85,8 +88,8 @@
         };
     }]);
 
-    app.controller('search-assets', [ '$scope', 'aem', '_', 'cs', '_s', 'opener',
-        function ($scope, aem, _, cs, _s, opener) {
+    app.controller('search-assets', [ '$scope', 'aem', '_', '_s', 'opener',
+        function ($scope, aem, _, _s, opener) {
             $scope.damHost = "http://localhost:4502";
             $scope.showLogin = !aem.isLoggedIn();
 
