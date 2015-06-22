@@ -1,6 +1,6 @@
 # cep-aem-search-extension
 
-This is an example of a CEP (Creative Extension Platform) extension for Adobe Photoshop which searches for AEM Assets. It is ugly on purpose.
+This is an example of a CEP (Creative Extension Platform) extension for Adobe Photoshop which searches for AEM Assets.
 
 # Requirements
 
