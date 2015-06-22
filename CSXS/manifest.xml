@@ -6,6 +6,7 @@
     <ExecutionEnvironment>
         <HostList>
             <Host Name="PHXS" Version="[15.0,16.9]"/>
+            <Host Name="IDSN" Version="[11.0,11.9]" />
         </HostList>
         <LocaleList>
             <Locale Code="All"/>
