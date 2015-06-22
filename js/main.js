@@ -19,22 +19,24 @@
     app.factory('_s', function() {
         return require('underscore.string');
     });
-    
+
     app.factory('cs', function() {
         return new CSInterface();
     });
 
-    app.factory('aem', ['request', '_', '$localStorage', function(request, _, $localStorage) {
-        var searchDefaults = {
-            'path': "/content/dam",
-            'type': 'dam:Asset',
-            'orderby': '@jcr:content/jcr:lastModified',
-            'orderby.sort': 'desc',
-            'p.hits': 'full',
-            'p.nodedepth': 2,
-            'p.limit': 25,
-            'p.offset': 0
-        };
+    app.constant('SEARCH_DEFAULTS', {
+        'path': "/content/dam",
+        'type': 'dam:Asset',
+        'orderby': '@jcr:content/jcr:lastModified',
+        'orderby.sort': 'desc',
+        'p.hits': 'full',
+        'p.nodedepth': 2,
+        'p.limit': 25,
+        'p.offset': 0
+    });
+
+    app.factory('aem', ['request', '_', '$localStorage', 'SEARCH_DEFAULTS',
+        function(request, _, $localStorage, SEARCH_DEFAULTS) {
         
         return {
             login: function(username, password, url, success, error) {
@@ -60,7 +62,7 @@
                     url : $localStorage.baseUrl + "/bin/querybuilder.json",
                     form : _.extend({
                             'fulltext' : term
-                        }, searchDefaults),
+                        }, SEARCH_DEFAULTS),
                     headers : {
                         'Cookie' : $localStorage.tokenCookie
                     }
@@ -137,7 +139,6 @@
 
             $scope.open = function(result){
                 var path = "aem-asset:" + result.pathWithinDam + "?action=open";
-                console.log(path);
                 opener(path);
             };
             
