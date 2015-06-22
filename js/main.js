@@ -2,7 +2,7 @@
     require('angular')
     require('ngStorage');
 
-    var app = angular.module('SearchAEM', [ 'ngStorage' ]);
+    var app = angular.module('SearchAEM', [ 'ngStorage', 'ngEnter' ]);
 
     app.factory('request', function() {
         return require('request');
@@ -82,20 +82,6 @@
             }
         };
     }]);
-
-    app.directive('ngEnter', function () {
-        return function($scope, element, attrs) {
-            element.bind("keydown keypress", function(event) {
-                if (event.which === 13) {
-                    $scope.$apply(function() {
-                        $scope.$eval(attrs.ngEnter);
-                    });
-
-                    event.preventDefault();
-                }
-            });
-        };
-    });
 
     app.controller('search-assets', [ '$scope', 'aem', '_', 'cs', '_s', 'opener',
         function ($scope, aem, _, cs, _s, opener) {
